@@ -1,58 +1,69 @@
-/* main.js - Általános scriptek és űrlap validáció
-    Készítette: [A Te Neved]
-*/
+/* main.js - BATGYM: Logós Menü + Validálás */
 
-// Megvárjuk, amíg az oldal betöltődik
 document.addEventListener('DOMContentLoaded', function() {
     
-    // Megkeressük az űrlapot az ID alapján
+    // --- 1. MOBIL MENÜ (A LOGÓRA KATTINTVA) ---
+    const logo = document.querySelector(".logo");
+    const navMenu = document.querySelector(".menu");
+
+    if (logo && navMenu) {
+        // Ha rányomsz a BATGYM logóra
+        logo.addEventListener("click", () => {
+            // Csak mobilon (768px alatt) nyissa meg
+            if (window.innerWidth <= 768) {
+                navMenu.classList.toggle("active");
+            }
+        });
+
+        // Ha választasz egy menüpontot, zárja be
+        document.querySelectorAll(".menu a").forEach(link => {
+            link.addEventListener("click", () => {
+                navMenu.classList.remove("active");
+            });
+        });
+    }
+
+    // --- 2. ŰRLAP VALIDÁLÁS (A pontokért) ---
     const form = document.getElementById('regForm');
 
-    // Csak akkor futtatjuk, ha az űrlap létezik az oldalon (hogy ne adjon hibát más oldalakon)
     if (form) {
         form.addEventListener('submit', function(e) {
-            
-            // 1. Megakadályozzuk az alapértelmezett elküldést (hogy tudjunk ellenőrizni)
-            e.preventDefault();
+            e.preventDefault(); // Ne küldje el hibásan
 
-            // Változók a mezőkhöz
+            // Mezők behúzása
             const nevInput = document.getElementById('nev');
             const emailInput = document.getElementById('email');
             const ageInput = document.getElementById('age');
             const aszfInput = document.getElementById('aszf');
             const celInput = document.getElementById('cel');
 
-            // Hibaállapot jelző (kezdetben nincs hiba)
             let hasError = false;
 
-            // --- VALIDÁCIÓS LOGIKA ---
-
-            // 1. Név ellenőrzése (nem lehet üres)
+            // Név ellenőrzése
             if (nevInput.value.trim() === '') {
-                showError(nevInput, 'nev-error', 'A név megadása kötelező!');
+                showError(nevInput, 'nev-error', 'A név kötelező!');
                 hasError = true;
             } else {
                 clearError(nevInput, 'nev-error');
             }
 
-            // 2. Email ellenőrzése (egyszerű mintaillesztés)
+            // Email ellenőrzése
             if (!emailInput.value.includes('@') || !emailInput.value.includes('.')) {
-                showError(emailInput, 'email-error', 'Kérlek, valós email címet adj meg!');
+                showError(emailInput, 'email-error', 'Helyes emailt adj meg!');
                 hasError = true;
             } else {
                 clearError(emailInput, 'email-error');
             }
 
-            // 3. Életkor ellenőrzése (szám és tartomány)
+            // Kor ellenőrzése
             if (ageInput.value < 14 || ageInput.value > 99) {
-                // Itt alertet használunk példaként, vagy színezhetjük a keretet
                 ageInput.classList.add('input-error');
                 hasError = true;
             } else {
                 ageInput.classList.remove('input-error');
             }
 
-            // 4. Cél kiválasztása (Select)
+            // Cél ellenőrzése
             if (celInput.value === "") {
                 celInput.classList.add('input-error');
                 hasError = true;
@@ -60,43 +71,32 @@ document.addEventListener('DOMContentLoaded', function() {
                 celInput.classList.remove('input-error');
             }
 
-            // 5. ÁSZF elfogadása (Checkbox)
+            // ÁSZF
             if (!aszfInput.checked) {
-                showError(aszfInput, 'aszf-error', 'A szabályzat elfogadása kötelező!');
+                showError(aszfInput, 'aszf-error', 'Kötelező elfogadni!');
                 hasError = true;
             } else {
                 clearError(aszfInput, 'aszf-error');
             }
 
-            // --- VÉGEREDMÉNY ---
-            
+            // Siker
             if (!hasError) {
-                // Ha nincs hiba, sikeresnek tekintjük
-                alert('Sikeres regisztráció! Köszönjük.');
-                // Itt lehetne elküldeni a szerverre az adatokat: form.submit();
-                // Mi most csak töröljük a mezőket:
+                alert('Sikeres regisztráció!');
                 form.reset();
             }
         });
     }
 });
 
-// Segédfüggvény a hiba megjelenítésére (Hogy ne kelljen mindig ugyanazt leírni)
-function showError(inputElement, errorSpanId, message) {
-    inputElement.classList.add('input-error'); // Piros keret hozzáadása
-    const errorSpan = document.getElementById(errorSpanId);
-    if (errorSpan) {
-        errorSpan.textContent = message;
-        errorSpan.style.display = 'block'; // Szöveg megjelenítése
-    }
+// Segédfüggvények (Hiba kiírás/törlés)
+function showError(input, id, msg) {
+    input.classList.add('input-error');
+    const span = document.getElementById(id);
+    if (span) { span.textContent = msg; span.style.display = 'block'; }
 }
 
-// Segédfüggvény a hiba törlésére
-function clearError(inputElement, errorSpanId) {
-    inputElement.classList.remove('input-error'); // Piros keret levétele
-    const errorSpan = document.getElementById(errorSpanId);
-    if (errorSpan) {
-        errorSpan.style.display = 'none'; // Szöveg elrejtése
-    }
+function clearError(input, id) {
+    input.classList.remove('input-error');
+    const span = document.getElementById(id);
+    if (span) { span.style.display = 'none'; }
 }
-
