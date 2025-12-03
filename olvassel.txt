@@ -1,0 +1,19 @@
+Készítő neve: [Írd ide a teljes neved]
+Neptun kód: [Ha szükséges, írd ide]
+Weboldal címe: [Ide majd a GitHub Pages linket kell bemásolnod, lásd lentebb!]
+
+A weboldal témája:
+Ez a weboldal egy fitnesz témájú portál, amely férfiaknak és nőknek kínál edzésterveket. Tartalmaz továbbá egy interaktív kalóriaszámlálót, amely segít meghatározni a napi energiaszükségletet.
+
+Saját JavaScript kód leírása:
+1. js/main.js: Ez a fájl végzi a regisztrációs űrlap validálását (üres mezők, email formátum ellenőrzése) és a hibaüzenetek kezelését.
+2. js/calculator.js: Ez a "Saját interaktív program". A Mifflin-St Jeor képlet alapján kiszámolja a felhasználó alapanyagcseréjét (BMR), majd beszorozza az aktivitási szinttel.
+
+Betűtípusok:
+Google Fonts: 'Oswald' (címsorok) és 'Roboto' (folyó szöveg).
+Importálva a style.css fájlban.
+
+Felhasznált források:
+- Képek: Unsplash.com (jogtiszta forrás).
+- Ikonok/Betűtípusok: Google Fonts.
+- Kódolási segítség: A projektet mesterséges intelligencia (Large Language Model) segítségével, lépésről lépésre fejlesztettem, a generált kódot átnéztem, értelmeztem és teszteltem.
