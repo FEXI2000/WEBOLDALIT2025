@@ -1,52 +1,59 @@
-/* --- ALAPBEÁLLÍTÁSOK (Reset) --- */
+/* --- ALAPBEÁLLÍTÁSOK (Reset & Dark Mode) --- */
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box; /* Ez fontos a méretezéshez */
+    box-sizing: border-box;
 }
 
 body {
-    font-family: 'Roboto', sans-serif; /* Google Font használata */
-    background-color: #f4f4f4;
-    color: #333;
+    font-family: 'Roboto', sans-serif;
+    /* Alapból a SÖTÉT téma */
+    background-color: #1a1a1a; 
+    color: #e0e0e0; 
     line-height: 1.6;
     display: flex;
     flex-direction: column;
-    min-height: 100vh; /* Hogy a footer mindig alul legyen */
+    min-height: 100vh;
 }
 
-/* --- FEJLÉC ÉS NAVIGÁCIÓ (Flexbox) --- */
+/* --- FEJLÉC ÉS NAVIGÁCIÓ --- */
 header {
-    background-color: #222;
+    background-color: #1a1a1a; /* Ugyanaz a szín, mint a háttér, hogy egybeolvadjon */
     color: #fff;
     padding: 1rem 0;
-    position: sticky; /* Követi a görgetést */
+    position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
 }
 
 nav {
-    display: flex; /* Flexbox aktiválása */
-    justify-content: space-between; /* Két szélre tolja a logót és a menüt */
-    align-items: center; /* Középre igazítja őket függőlegesen */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     max-width: 1100px;
     margin: 0 auto;
     padding: 0 20px;
 }
 
+/* LOGO - Indigó és kattintható a mobil menühöz */
 .logo {
     font-family: 'Oswald', sans-serif;
     font-size: 1.8rem;
     font-weight: bold;
-    color: #ff6600; /* Sportos narancssárga */
+    color: #8A2BE2; /* BlueViolet */
     text-transform: uppercase;
+    cursor: pointer; /* Ez jelzi, hogy kattintható */
+    user-select: none;
+    z-index: 1001;
+    position: relative;
 }
 
+/* MENÜ LISTA */
 .menu {
-    display: flex; /* Menüpontok egymás mellett */
+    display: flex;
     list-style: none;
-    gap: 20px; /* Távolság a menüpontok között */
+    gap: 20px;
 }
 
 .menu a {
@@ -57,17 +64,17 @@ nav {
 }
 
 .menu a:hover {
-    color: #ff6600;
+    color: #8A2BE2;
 }
 
-/* --- FŐ TARTALOM --- */
+/* --- FŐ TARTALOM & HERO --- */
 main {
-    flex: 1; /* Kitölti a helyet a header és footer között */
+    flex: 1;
 }
 
-/* Hero szekció (Kezdőlap teteje) */
 .hero {
-    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+    /* Sötétített háttérkép */
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
     background-size: cover;
     background-position: center;
     color: #fff;
@@ -81,35 +88,45 @@ main {
     margin-bottom: 20px;
 }
 
-.btn {
+/* GOMBOK (Egységes Indigó) */
+.btn, .submit-btn {
     display: inline-block;
-    background: #ff6600;
+    background: #4B0082 !important; /* Indigo */
     color: #fff;
     padding: 10px 25px;
     text-decoration: none;
     border-radius: 5px;
     margin: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
     transition: background 0.3s;
 }
 
-.btn:hover {
-    background: #e65c00;
+.btn:hover, .submit-btn:hover {
+    background: #30005a !important;
 }
 
-/* --- ŰRLAP STÍLUSOK --- */
+.submit-btn {
+    width: 100%;
+    padding: 12px;
+}
+
+/* --- ŰRLAPOK (Sötét mód, FEHÉR MEZŐKKEL) --- */
 .registration-form {
     max-width: 600px;
     margin: 40px auto;
-    background: #fff;
+    background: #2d2d2d; /* Sötét doboz */
     padding: 30px;
     border-radius: 8px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    color: #fff;
 }
 
 .registration-form h2 {
     text-align: center;
     margin-bottom: 20px;
-    color: #222;
+    color: #fff;
 }
 
 .form-group {
@@ -120,8 +137,10 @@ main {
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
+    color: #ddd;
 }
 
+/* Input mezők - FEHÉR HÁTTÉRREL (Ahogy kérted) */
 .form-group input[type="text"],
 .form-group input[type="email"],
 .form-group input[type="number"],
@@ -130,262 +149,182 @@ main {
     width: 100%;
     padding: 10px;
     border: 1px solid #ddd;
+    background-color: #fff; /* Fehér háttér */
+    color: #333;            /* Sötét betű */
     border-radius: 4px;
     font-family: 'Roboto', sans-serif;
 }
 
-/* Hibaüzenetek stílusa (JS fogja használni) */
+/* Checkbox és Radio igazítások */
+.form-group input[type="checkbox"] {
+    width: auto;
+    display: inline-block;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+.form-group input[type="checkbox"] + label {
+    display: inline-block;
+    width: auto;
+    margin-bottom: 0;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+.radio-group {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.radio-group input[type="radio"] {
+    width: auto;
+    margin-right: 5px;
+}
+.radio-group label {
+    display: inline-block;
+    margin-bottom: 0;
+    cursor: pointer;
+}
+
+/* Validálás hibaüzenetek */
 .error-msg {
-    color: red;
+    color: #ff4444;
     font-size: 0.85rem;
-    display: none; /* Alapból rejtett */
+    display: none;
     margin-top: 5px;
 }
-
-/* Ha hibás egy mező, ezt a class-t kapja JS-től */
 .input-error {
-    border: 2px solid red !important;
+    border: 2px solid #ff4444 !important;
 }
 
-.submit-btn {
-    display: block;
-    width: 100%;
-    padding: 12px;
-    background: #222;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    font-size: 1rem;
-    border-radius: 4px;
-}
-
-.submit-btn:hover {
-    background: #444;
-}
-
-/* --- FOOTER --- */
-footer {
-    background: #222;
-    color: #fff;
-    text-align: center;
-    padding: 20px;
-    margin-top: auto;
-}
-
-/* --- RESZPONZIVITÁS (Media Queries) --- */
-@media (max-width: 768px) {
-    nav {
-        flex-direction: column; /* Mobilon egymás alá kerül a logó és menü */
-    }
-    
-    .menu {
-        flex-direction: column;
-        margin-top: 15px;
-        text-align: center;
-    }
-
-    .hero h1 {
-        font-size: 2rem;
-    }
-}
-/* --- EDZÉS KÁRTYÁK (CSS GRID használata a követelményekért) --- */
-/* --- EDZÉS KÁRTYÁK MÓDOSÍTÁSA (EGYMÁS ALÁ) --- */
+/* --- EDZÉS KÁRTYÁK (Egymás alatt, sötétben) --- */
 .workout-container {
     display: grid;
-    /* Ez a sor változott: 1fr = egyetlen oszlop, tehát egymás alatt lesznek */
-    grid-template-columns: 1fr; 
-    gap: 40px; /* Nagyobb hézag a kártyák között */
+    grid-template-columns: 1fr; /* Egy oszlop */
+    gap: 40px;
     padding: 40px 20px;
-    max-width: 800px; /* Összébb húzzuk, hogy olvashatóbb legyen középen */
+    max-width: 800px;
     margin: 0 auto;
 }
 
-/* Kicsit csinosítunk a listán, hogy a 9 gyakorlat jól nézzen ki */
-.card ul {
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* Két oszlopba rendezi a gyakorlatokat a kártyán belül */
-    gap: 10px;
-    padding-left: 20px;
-}
-
-@media (max-width: 600px) {
-    .card ul {
-        grid-template-columns: 1fr; /* Mobilon maradjon egy oszlop a lista */
-    }
-}
-
 .card {
-    background: #fff;
+    background: #2d2d2d;
+    color: #fff;
     border-radius: 10px;
-    overflow: hidden; /* Hogy a kép ne lógjon ki */
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
     display: flex;
     flex-direction: column;
+    transition: transform 0.3s ease;
 }
 
 .card:hover {
-    transform: translateY(-5px); /* Kicsit megemelkedik, ha ráviszed az egeret */
+    transform: translateY(-5px);
 }
 
 .card img {
     width: 100%;
-    height: 200px;
+    height: 300px;
     object-fit: cover;
 }
 
 .card-content {
     padding: 20px;
-    flex-grow: 1; /* Kitölti a maradék helyet */
 }
 
 .card h3 {
     margin-bottom: 10px;
-    color: #222;
+    color: #fff;
     font-family: 'Oswald', sans-serif;
 }
 
 .card ul {
-    list-style-position: inside;
-    margin-top: 10px;
-    color: #555;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    padding-left: 20px;
+    color: #ccc;
 }
 
-/* --- KALÓRIASZÁMLÁLÓ STÍLUSOK --- */
+@media (max-width: 600px) {
+    .card ul {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* --- KALKULÁTOR --- */
 .calculator-box {
     max-width: 500px;
     margin: 50px auto;
-    background: white;
+    background: #2d2d2d;
     padding: 30px;
     border-radius: 15px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-    border-top: 5px solid #ff6600;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    border-top: 5px solid #4B0082;
+    color: #fff;
 }
 
 .result-box {
     margin-top: 20px;
     padding: 15px;
-    background: #222;
+    background: #000;
     color: #fff;
     text-align: center;
     border-radius: 8px;
-    display: none; /* Alapból rejtett, JS hozza elő */
+    display: none;
     animation: fadeIn 0.5s;
 }
 
 .result-box h3 {
-    color: #ff6600;
-    font-size: 2rem;
+    color: #8A2BE2;
 }
 
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
 }
-/* --- RÁDIÓ GOMBOK VÍZSZINTES IGAZÍTÁSA --- */
-.radio-group {
-    display: flex;          /* Ez teszi őket egymás mellé */
-    align-items: center;    /* Függőlegesen középre igazítja a pöttyöt és a szöveget */
-    gap: 20px;              /* Távolság a "Férfi" és a "Nő" opció között */
-    margin-top: 5px;
-}
 
-.radio-group input[type="radio"] {
-    margin-right: 5px;      /* Kis távolság a pötty és a saját szövege között */
-    width: auto;            /* Hogy ne nyújtsa meg őket */
-}
-
-.radio-group label {
-    margin-bottom: 0;       /* Ne tolja el őket */
-    font-weight: normal;    /* Opcionális: kicsit vékonyabb betű */
-    cursor: pointer;        /* Hogy a szövegre kattintva is jelöljön */
-}
-/* --- CHECKBOX EGY SORBA RENDEZÉSE --- */
-/* Maga a jelölőnégyzet */
-.form-group input[type="checkbox"] {
-    width: auto;            /* Ne nyújtsa ki 100%-ra */
-    display: inline-block;  /* Maradjon a sorban */
-    margin-right: 10px;     /* Kis hely a szöveg előtt */
-    vertical-align: middle; /* Szépen középre igazodjon a szöveghez */
-}
-
-/* A közvetlenül utána jövő címke (label) */
-.form-group input[type="checkbox"] + label {
-    display: inline-block;  /* Felülírjuk a korábbi blokk nézetet */
-    width: auto;
-    margin-bottom: 0;
-    font-weight: normal;    /* Nem muszáj félkövérnek lennie */
-    vertical-align: middle;
-    cursor: pointer;
-}
-/* --- ÚJ BATGYM SZÍNVILÁG (INDIGÓ) --- */
-
-/* 1. Logó és Linkek (Sötét háttéren világosabb lilát használunk, hogy olvasható legyen) */
-.logo {
-    color: #8A2BE2; /* BlueViolet - hogy virítson a fekete fejlécen */
-}
-
-.menu a:hover {
-    color: #8A2BE2;
-}
-
-/* 2. Gombok és Kártyák (Fehér háttéren mehet a mély Indigó) */
-.btn {
-    background-color: #4B0082; /* Hivatalos Indigo */
-}
-
-.btn:hover {
-    background-color: #30005a; /* Sötétebb lila kattintáskor */
-}
-
-/* Űrlap gombok */
-.submit-btn {
-    background-color: #4B0082 !important; /* A !important felülír mindent */
-}
-
-.submit-btn:hover {
-    background-color: #30005a !important;
-}
-
-/* 3. Kalkulátor és egyéb díszítések */
-.calculator-box {
-    border-top-color: #4B0082; /* A doboz teteje */
-}
-
-.result-box h3 {
-    color: #4B0082; /* Az eredmény szövege */
-}
-/* --- DARK MODE (SÖTÉT HÁTTÉR) --- */
-
-/* 1. Az oldal alap háttere (Nagyon sötét szürke) */
-body {
-    background-color: #1a1a1a; 
-    color: #e0e0e0; /* A szöveg világosszürke, hogy olvasható legyen */
-}
-
-/* 2. A dobozok (Kártyák, Űrlap, Kalkulátor) háttere */
-/* Ezek legyenek egy árnyalattal világosabbak, hogy kiemelkedjenek */
-.registration-form, 
-.card, 
-.calculator-box {
-    background-color: #2d2d2d; /* Grafitszürke */
-    color: #fff;               /* A dobozban lévő szöveg hófehér */
-    box-shadow: 0 5px 15px rgba(0,0,0,0.5); /* Erősebb árnyék */
-}
-
-/* 3. Címsorok színe a dobozokon belül (korábban feketék voltak) */
-.registration-form h2,
-.card h3,
-.result-box h3 {
+/* --- FOOTER --- */
+footer {
+    background: #000;
     color: #fff;
+    text-align: center;
+    padding: 20px;
+    margin-top: auto;
 }
 
-/* 4. A listák (felsorolások) színe a kártyákban */
-.card ul {
-    color: #ccc;
-}
+/* --- MOBIL NÉZET (Nincs hamburger, Logó nyitja a menüt) --- */
+@media (max-width: 768px) {
+    /* 1. Hamburger eltüntetése biztos ami biztos */
+    .hamburger {
+        display: none !important;
+    }
 
-/* 5. Az űrlap mezők feliratai (Label) */
-.form-group label {
-    color: #ddd;
+    /* 2. Hero szöveg méret igazítás */
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    /* 3. MENÜ ELREJTÉSE ÉS MEGJELENÍTÉSE */
+    .menu {
+        position: fixed;
+        left: -100%;     /* Balra elrejtve */
+        top: 60px;       /* A fejléc alatt kezdődik */
+        flex-direction: column;
+        background-color: #1a1a1a; /* Sötét háttér */
+        width: 100%;
+        height: 100vh;   /* Teljes képernyő */
+        text-align: center;
+        transition: 0.4s ease;
+        padding-top: 40px;
+        box-shadow: 0 10px 10px rgba(0,0,0,0.5);
+    }
+
+    /* Ha aktív (JS kapcsolja), akkor beúszik */
+    .menu.active {
+        left: 0;
+    }
+
+    .menu li {
+        margin: 25px 0;
+    }
 }
