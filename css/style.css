@@ -105,6 +105,8 @@ main {
 .submit-btn {
     width: 100%;
     padding: 12px;
+    margin: 20px 0 0 0; 
+    box-sizing: border-box; 
 }
 
 .registration-form {
@@ -315,3 +317,4 @@ footer {
         margin: 25px 0;
     }
 }
+
