@@ -2,106 +2,105 @@
 <html lang="hu">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <meta name="author" content="A Te Neved"> <meta name="description" content="Ingyenes edzéstervek nőknek és férfiaknak, valamint kalóriaszámláló program.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <meta name="author" content="Fekszi Botond"> 
+    <meta name="description" content="Ingyenes edzéstervek nőknek és férfiaknak, valamint kalóriaszámláló program.">
     
-    <title>BATGYM - Kezdőlap</title> <link rel="preconnect" href="https://fonts.googleapis.com">
+    <title>BATGYM - Kezdőlap</title> 
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-
     <link rel="icon" type="image/x-icon" href="img/favicon.ico">
-
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
     <header>
         <nav>
-    <div class="logo">BATGYM</div>
-    
-    <ul class="menu">
-        <li><a href="index.html">Főoldal</a></li>
-        <li><a href="ferfi_edzes.html">Férfi Edzés</a></li>
-        <li><a href="no_edzes.html">Női Edzés</a></li>
-        <li><a href="pilates.html">Pilates</a></li>
-        <li><a href="kaloria.html">Kalkulátor</a></li>
-    </ul>
-</nav>
+            <div class="logo">BATGYM</div>
+            <ul class="menu">
+                <li><a href="index.html">Főoldal</a></li>
+                <li><a href="ferfi_edzes.html">Férfi Edzés</a></li>
+                <li><a href="no_edzes.html">Női Edzés</a></li>
+                <li><a href="pilates.html">Pilates</a></li>
+                <li><a href="kaloria.html">Kalkulátor</a></li>
+            </ul>
+        </nav>
     </header>
 
     <main>
-
         <section class="hero">
-    <h1>Érd el életed legjobb formáját!</h1>
-    <p>Válassz edzésterveink közül vagy számold ki a kalóriaigényedet.</p>
-    <div class="hero-buttons">
-        <a href="ferfi_edzes.html" class="btn">Férfiaknak</a>
-        <a href="no_edzes.html" class="btn">Nőknek</a>
-    </div>
-</section>
-
-<section class="registration-form">
-    <h2>Csatlakozz a közösséghez!</h2>
-    <p>Töltsd ki az űrlapot a személyre szabott tippekért!</p>
-    
-    <form id="regForm" action="#" method="post" novalidate>
-        
-        <div class="form-group">
-            <label for="nev">Teljes név:</label>
-            <input type="text" id="nev" name="nev" placeholder="Pl. Kiss János" required>
-            <span class="error-msg" id="nev-error"></span>
-        </div>
-
-        <div class="form-group">
-            <label for="email">E-mail cím:</label>
-            <input type="email" id="email" name="email" placeholder="pelda@email.com" required>
-            <span class="error-msg" id="email-error"></span>
-        </div>
-
-        <div class="form-group">
-            <label for="age">Életkor:</label>
-            <input type="number" id="age" name="age" min="14" max="99" required>
-        </div>
-
-        <div class="form-group">
-            <label>Nemed:</label>
-            <div class="radio-group">
-                <input type="radio" id="ferfi" name="nem" value="ferfi">
-                <label for="ferfi">Férfi</label>
-                
-                <input type="radio" id="no" name="nem" value="no">
-                <label for="no">Nő</label>
+            <h1>Érd el életed legjobb formáját!</h1>
+            <p>Válassz edzésterveink közül vagy számold ki a kalóriaigényedet.</p>
+            <div class="hero-buttons">
+                <a href="ferfi_edzes.html" class="btn">Férfiaknak</a>
+                <a href="no_edzes.html" class="btn">Nőknek</a>
             </div>
-        </div>
+        </section>
 
-        <div class="form-group">
-            <label for="cel">Mi a célod?</label>
-            <select id="cel" name="cel">
-                <option value="">-- Válassz célt --</option>
-                <option value="fogyas">Fogyás</option>
-                <option value="izom">Izomépítés</option>
-                <option value="allokepesseg">Állóképesség</option>
-            </select>
-        </div>
+        <section class="registration-form">
+            <h2>Csatlakozz a közösséghez!</h2>
+            <p>Töltsd ki az űrlapot a személyre szabott tippekért!</p>
+            
+            <form id="regForm" action="#" method="post" novalidate>
+                
+                <div class="form-group">
+                    <label for="nev">Teljes név:</label>
+                    <input type="text" id="nev" name="nev" placeholder="Pl. Kiss János" required>
+                    <span class="error-msg" id="nev-error"></span>
+                </div>
 
-        <div class="form-group">
-            <input type="checkbox" id="aszf" name="aszf" required>
-            <label for="aszf">Elfogadom az adatvédelmi szabályzatot.</label>
-            <span class="error-msg" id="aszf-error"></span>
-        </div>
+                <div class="form-group">
+                    <label for="email">E-mail cím:</label>
+                    <input type="email" id="email" name="email" placeholder="pelda@email.com" required>
+                    <span class="error-msg" id="email-error"></span>
+                </div>
 
-        <div class="form-group">
-            <label for="start">Mikor kezdenéd?</label>
-            <input type="date" id="start" name="start">
-        </div>
+                <div class="form-group">
+                    <label for="age">Életkor:</label>
+                    <input type="number" id="age" name="age" min="14" max="99" required>
+                </div>
 
-        <button type="submit" class="submit-btn">Regisztráció</button>
-    </form>
-</section>
+                <div class="form-group">
+                    <label>Nemed:</label>
+                    <div class="radio-group">
+                        <input type="radio" id="ferfi" name="nem" value="ferfi">
+                        <label for="ferfi">Férfi</label>
+                        
+                        <input type="radio" id="no" name="nem" value="no">
+                        <label for="no">Nő</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="cel">Mi a célod?</label>
+                    <select id="cel" name="cel">
+                        <option value="">-- Válassz célt --</option>
+                        <option value="fogyas">Fogyás</option>
+                        <option value="izom">Izomépítés</option>
+                        <option value="allokepesseg">Állóképesség</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <input type="checkbox" id="aszf" name="aszf" required>
+                    <label for="aszf">Elfogadom az adatvédelmi szabályzatot.</label>
+                    <span class="error-msg" id="aszf-error"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="start">Mikor kezdenéd?</label>
+                    <input type="date" id="start" name="start">
+                </div>
+
+                <button type="submit" class="submit-btn">Regisztráció</button>
+            </form>
+        </section>
     </main>
 
     <footer>
-        <p>&copy; 2025 BATGYM
-. Fekszi Botond minden jog fenntartva. </p>
+        <p>&copy; 2025 BATGYM. Fekszi Botond minden jog fenntartva.</p>
     </footer>
 
     <script src="js/main.js"></script>
